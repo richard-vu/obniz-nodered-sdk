@@ -19,6 +19,11 @@
   "dependencies": {
     "obniz": "^1.14.1"
   },
+
+  "keywords": [
+    "node-red",
+    "obniz"
+  ],
   "node-red": {
     "nodes": {
       "obniz": "obniz.js"
