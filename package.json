@@ -1,5 +1,5 @@
 {
-  "name": "red-contrib-obniz",
+  "name": "node-red-contrib-obniz",
   "version": "0.1.0",
   "description": "",
   "main": "obniz.js",
@@ -18,5 +18,10 @@
   "homepage": "https://github.com/9wick/node-red-contrib-obniz#readme",
   "dependencies": {
     "obniz": "^1.14.1"
+  },
+  "node-red": {
+    "nodes": {
+      "obniz": "obniz.js"
+    }
   }
 }
