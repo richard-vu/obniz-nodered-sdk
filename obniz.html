@@ -1,0 +1,27 @@
+<script type="text/javascript">
+  RED.nodes.registerType('obniz',{
+    category: 'advanced',
+    color: '#00afd5',
+    defaults: {
+      obnizId: {value:"",required:true},
+    },
+    inputs:1,
+    outputs:0,
+    icon: "arrow-in.png",
+    align: "right",
+    label: function() {
+      return this.name||"obniz";
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="obniz">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="obnizId">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="obniz">
+    <p>obnizにデータを送る</p>
+</script>

@@ -1,0 +1,22 @@
+{
+  "name": "red-contrib-obniz",
+  "version": "0.1.0",
+  "description": "",
+  "main": "obniz.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/9wick/node-red-contrib-obniz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/9wick/node-red-contrib-obniz/issues"
+  },
+  "homepage": "https://github.com/9wick/node-red-contrib-obniz#readme",
+  "dependencies": {
+    "obniz": "^1.14.1"
+  }
+}
