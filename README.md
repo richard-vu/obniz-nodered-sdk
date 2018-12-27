@@ -42,3 +42,7 @@ For example, clear display and show text command is this.
    }
 ]
 ```
+
+
+## LICENSE
+See [LICENSE.txt](./LICENSE.txt)

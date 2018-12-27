@@ -41,3 +41,6 @@ jsonのコマンドリストは [こちら](https://obniz.io/doc/about_obniz_api
    }
 ]
 ```
+
+## LICENSE
+[LICENSE.txt](./LICENSE.txt)を参照ください
