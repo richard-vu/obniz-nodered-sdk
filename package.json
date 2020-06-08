@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-obniz",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Obniz node to send json data to obniz cloud. Obniz is electronics as a service and you can use electronics with json APIs. ",
   "main": "obniz.js",
   "scripts": {
@@ -13,11 +13,11 @@
   "author": "kido",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/9wick/node-red-contrib-obniz/issues"
+    "url": "https://github.com/obniz/obniz-nodered-sdk/issues"
   },
-  "homepage": "https://github.com/9wick/node-red-contrib-obniz#readme",
+  "homepage": "https://github.com/obniz/obniz-nodered-sdk#readme",
   "dependencies": {
-    "obniz": "^3.5.0"
+    "obniz": "^3.6.0"
   },
   "keywords": [
     "node-red",
