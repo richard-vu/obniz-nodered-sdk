@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/9wick/node-red-contrib-obniz.git"
+    "url": "git+https://obniz/obniz-nodered-sdk.git"
   },
   "author": "kido",
   "license": "MIT",
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/obniz/obniz-nodered-sdk#readme",
   "dependencies": {
-    "obniz": "^3.6.0"
+    "obniz": "^3.6.1"
   },
   "keywords": [
     "node-red",
