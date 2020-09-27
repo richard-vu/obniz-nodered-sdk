@@ -175,7 +175,7 @@ module.exports  = (RED, node, code, obniz, obnizParts, msg, send, done) => {
     let p = node.script.runInContext(context);
 
     p.then((result)=>{
-      // nothing
+      send(result);
       done();
     }).catch(err => {
       if ((typeof err === "object") && err.hasOwnProperty("stack")) {
