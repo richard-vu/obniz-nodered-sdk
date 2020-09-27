@@ -1,32 +1,87 @@
 <script type="text/javascript">
-  RED.nodes.registerType('obniz',{
-    category: 'advanced',
+
+  RED.nodes.registerType('obniz', {
+    category: 'config',
     color: '#00afd5',
     defaults: {
-      obnizId: {value:"",required:true},
-      name: { value: "" }
+      obnizId: {value: "", required: true, validate:RED.validators.regex(/^[0-9]{4}-?[0-9]{4}$/)},
+      deviceType: {value: "obnizboard", required: true},
+      name: {value: ""},
+      accessToken: {value: ""},
+      code: {value: ""}
     },
-    inputs:1,
-    outputs:0,
-    icon: "arrow-in.png",
-    align: "right",
-    label: function() {
-      return this.name||"obniz";
-    }
+    // inputs: 1,
+    // outputs: 0,
+    // icon: "arrow-in.png",
+    // align: "right",
+    label: function () {
+      return (this.name || "obniz") + "(" + this.obnizId + ")";
+    },
+    oneditprepare: function () {
+      this.editor = RED.editor.createEditor({
+        id: 'node-input-code-editor',
+        mode: 'ace/mode/javascript',
+        value: this.code
+      });
+
+    },
+    oneditsave: function () {
+      this.code = this.editor.getValue();
+      this.editor.destroy();
+      delete this.editor;
+
+      // let id = $("#node-config-input-obnizId").val();
+      // if (typeof id == "string") {
+      //   id = id.replace('-', '');
+      // }
+      // let digits = pad(id, 8);
+      // id =  digits.slice(0,4) + "-" + digits.slice(4,8);
+      // $("#node-config-input-obnizId").val(id);
+    },
+    oneditcancel: function () {
+      this.editor.destroy();
+      delete this.editor;
+    },
   });
+
+  function pad(num, size) {
+    let s = ""+num;
+    while (s.length < size) s = "0" + s;
+    return s;
+  }
+
 </script>
 
 <script type="text/x-red" data-template-name="obniz">
+
     <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> obnizId</label>
-        <input type="text" id="node-input-obnizId" placeholder="obnizId">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> name</label>
+        <input type="text" id="node-config-input-name" placeholder="">
     </div>
     <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></label>
-        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+        <label for="node-config-input-obnizId"><i class="fa fa-tag"></i> obniz ID</label>
+        <input type="text" id="node-config-input-obnizId" placeholder="obnizId">
     </div>
+    <div class="form-row">
+        <label for="node-config-input-accessToken"><i class="fa fa-tag"></i> access token</label>
+        <input type="text" id="node-config-input-accessToken" placeholder="">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-deviceType"><i class="fa fa-tag"></i> device type</label>
+        <select type="text" id="node-config-input-deviceType">
+          <option value="obnizboard">obnizBoard</option>
+          <option value="obnizboard1y">obnizBoard 1Y</option>
+          <option value="m5stickc">M5StickC</option>
+          <option value="m5stack">M5Stack Basic</option>
+          <option value="esp32">ESP32</option>
+        </select>
+    </div>
+
+    <div style="height: 250px; min-height:150px;" class="node-text-editor" id="node-input-code-editor"></div>
+
 </script>
 
 <script type="text/x-red" data-help-name="obniz">
     <p>obnizにデータを送る</p>
 </script>
+
