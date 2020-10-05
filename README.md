@@ -92,7 +92,7 @@ This is the code to repeat the process while obniz is online.
 As with the common configuration, there are two variables defined: obniz and obnizParts.
 
 
-! [](. /img/sample-function.png)
+! [](./img/sample-function.png)
 You can use this method as the function node.
 Use the `return msg` in order to output the message.
 
