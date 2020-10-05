@@ -1,0 +1,10 @@
+{
+    "obniz-repeat": {
+        "label": {
+            "function": "Function",
+            "initialize": "Setup",
+            "finalize": "Close",
+            "outputs": "Outputs"
+        }
+    }
+}

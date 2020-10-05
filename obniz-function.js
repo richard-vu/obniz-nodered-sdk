@@ -19,9 +19,10 @@ module.exports = function(RED) {
 
 
     this.on('input', function(msg, send, done) {
+
       runScriptInVm(RED, this, this.code, this.obnizNode.obniz, this.obnizNode.obnizParts, msg, send, done);
     });
 
   }
-  RED.nodes.registerType("obniz-out",obniz);
+  RED.nodes.registerType("obniz-function",obniz);
 }

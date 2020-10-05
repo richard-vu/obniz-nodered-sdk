@@ -1,0 +1,101 @@
+<script type="text/javascript">
+
+
+  RED.nodes.registerType('obniz-function', {
+    category: 'advanced',
+    color: '#00afd5',
+    defaults: {
+      obniz: {value: "", type:"obniz", required:true},
+      name: {value: ""},
+      code: {value: ""}
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "function.png",
+    align: "left",
+    label: function () {
+      return (this.name || "obniz function") ;
+    },
+    oneditprepare: function () {
+      this.editor = RED.editor.createEditor({
+        id: 'node-input-code-editor',
+        mode: 'ace/mode/nrjavascript',
+        value: this.code,
+        globals: {
+          msg:true,
+          context:true,
+          RED: true,
+          util: true,
+          flow: true,
+          global: true,
+          console: true,
+          Buffer: true,
+          setTimeout: true,
+          clearTimeout: true,
+          setInterval: true,
+          clearInterval: true,
+          obniz:true,
+          obnizParts:true,
+        }
+      });
+
+      var that = this;
+
+      var tabs = RED.tabs.create({
+        id: "func-tabs",
+        onchange: function (tab) {
+          $("#func-tabs-content").children().hide();
+          $("#" + tab.id).show();
+        }
+      });
+      tabs.addTab({
+        id: "func-tab-function",
+        label: that._("obniz-function.label.function")
+      });
+      tabs.activateTab("func-tab-function");
+    },
+    oneditsave: function () {
+      this.code = this.editor.getValue();
+      this.editor.destroy();
+      delete this.editor;
+    },
+    oneditcancel: function () {
+      this.editor.destroy();
+      delete this.editor;
+    },
+  });
+
+</script>
+
+
+<script type="text/x-red" data-template-name="obniz-function">
+
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> name</label>
+        <input type="text" id="node-input-name" placeholder="name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-obniz"><i class="fa fa-tag"></i> obniz</label>
+        <input type="text" id="node-input-obniz" placeholder="obniz">
+    </div>
+
+    <div class="form-row">
+        <ul style="min-width: 600px; margin-bottom: 20px;" id="func-tabs"></ul>
+    </div>
+
+    <div id="func-tabs-content" style="min-height: calc(100% - 150px);">
+
+       <div id="func-tab-function" style="display:none">
+          <div class="form-row node-text-editor-row" style="position:relative">
+              <div style="height: 250px; min-height:150px;" class="node-text-editor" id="node-input-code-editor"></div>
+          </div>
+        </div>
+    </div>
+
+</script>
+
+<script type="text/x-red" data-help-name="obniz-function">
+    <p>obnizと連携する</p>
+</script>
+

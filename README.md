@@ -26,22 +26,78 @@ or
 3. Click "Install"
 
 
-## How to use
 
-msg.payload is json to send to obniz server.
-The commands list is  [here](https://obniz.io/doc/about_obniz_api).
+## Node type
 
-For example, clear display and show text command is this.
-```json
-[
-   {
-       "display": {
-          "clear": true, 
-          "text": "Hello, obniz!"
-       }
-   }
-]
-```
+There are two types of nodes in the obniz node.
+
+- obniz repeat node
+
+![](./img/obniz-repeat.png)
+
+It is used when you want to get data periodically, for example for sensing.
+
+
+- obniz function node
+
+
+![](./img/obniz-function.png)
+
+You can use it to create output via obniz, such as obniz.display.
+You can also output the information obtained through obniz.
+
+## How to use 
+
+### Common.
+
+Both the obniz repeat node and the obniz function node require you to specify which obniz device to use.
+
+Add an obniz by selecting "Add a new obniz" in the properties of each node.
+
+![](./img/obniz-func-property.png)
+
+Here are the settings for adding
+
+![](./img/obniz-config.png)
+
+The initialization process allows you to set up the parts library and more.
+
+There are two variables defined here, obniz and obnizParts.
+An instance of obniz is set in the obnizParts variable, so you can set
+You can write `obniz.display.print("hello")` and so on.
+
+The obnizParts is set to a common object in all obniz nodes.
+You can store the obniz.wired parts and use them in your obniz repeat/function nodes
+
+![](./img/sample-config.png)
+
+### obniz repeat node
+
+This is the code to repeat the process while obniz is online.
+As with the common configuration, there are two variables defined: obniz and obnizParts.
+
+
+![](./img/sample-repeat.png)
+
+You can use this method as the function node.
+Use the `return msg` in order to output the message.
+
+Use `node.done()` and `node.send(msg)` for asynchronous processing.
+
+
+
+### obniz function node
+
+This is the code to repeat the process while obniz is online.
+As with the common configuration, there are two variables defined: obniz and obnizParts.
+
+
+! [](. /img/sample-function.png)
+You can use this method as the function node.
+Use the `return msg` in order to output the message.
+
+Use `node.done()` and `node.send(msg)` to perform asynchronous processing.
+
 
 
 ## LICENSE

@@ -20,9 +20,40 @@
     oneditprepare: function () {
       this.editor = RED.editor.createEditor({
         id: 'node-input-code-editor',
-        mode: 'ace/mode/javascript',
-        value: this.code
+        mode: 'ace/mode/nrjavascript',
+        value: this.code,
+        globals: {
+          msg:true,
+          context:true,
+          RED: true,
+          util: true,
+          flow: true,
+          global: true,
+          console: true,
+          Buffer: true,
+          setTimeout: true,
+          clearTimeout: true,
+          setInterval: true,
+          clearInterval: true,
+          obniz:true,
+          obnizParts:true,
+        }
       });
+
+      var that = this;
+
+      var tabs = RED.tabs.create({
+        id: "func-tabs",
+        onchange: function (tab) {
+          $("#func-tabs-content").children().hide();
+          $("#" + tab.id).show();
+        }
+      });
+      tabs.addTab({
+        id: "func-tab-init",
+        label: that._("obniz.label.initialize")
+      });
+      tabs.activateTab("func-tab-init");
 
     },
     oneditsave: function () {
@@ -77,8 +108,20 @@
         </select>
     </div>
 
-    <div style="height: 250px; min-height:150px;" class="node-text-editor" id="node-input-code-editor"></div>
 
+
+    <div class="form-row">
+        <ul style="min-width: 600px; margin-bottom: 20px;" id="func-tabs"></ul>
+    </div>
+
+    <div id="func-tabs-content" style="min-height: calc(100% - 150px);">
+
+       <div id="func-tab-init" style="display:none">
+          <div class="form-row node-text-editor-row" style="position:relative">
+              <div style="height: 250px; min-height:150px;" class="node-text-editor" id="node-input-code-editor"></div>
+          </div>
+        </div>
+    </div>
 </script>
 
 <script type="text/x-red" data-help-name="obniz">

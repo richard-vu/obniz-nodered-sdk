@@ -25,22 +25,78 @@ npm install node-red-contrib-obniz
 3. "Install"ボタンをクリック
 
 
+## ノードの種類
+
+obnizノードには２つのノードがあります。
+
+- obniz repeatノード
+
+![](./img/obniz-repeat.png)
+
+センシングなど、定期的にデータを取得したい場合に使用します。
+
+
+- obniz functionノード
+
+
+![](./img/obniz-function.png)
+
+obniz.displayなどobnizを通じて出力をしたい場合などに使います。
+出力も備えていますので、obnizを通じて得た情報を出力することもできます。
+
 ## 使い方
 
-msg.payload にobnizクラウドへ送りたいjsonを書いてobnizノードに渡します。
-jsonのコマンドリストは [こちら](https://obniz.io/doc/about_obniz_api)にあります
+### 共通
 
-ディスプレイを消して、文字を出力するjsonは下記のようになります。
-```json
-[
-   {
-       "display": {
-          "clear": true, 
-          "text": "Hello, obniz!"
-       }
-   }
-]
-```
+obniz repeatノードおよびobniz functionノードは、どちらも使用するobnizデバイスを指定する必要があります。
+
+各ノードのプロパティより、"新規にobnizを追加”を選択してobnizを追加します。
+
+![](./img/obniz-func-property.png)
+
+追加する際の設定項目は次のとおりです
+
+![](./img/obniz-config.png)
+
+初期化処理では、パーツライブラリの設定などを行うことができます。
+
+ここでは、obnizとobnizPartsの2つの変数が定義されています。
+obnizには設定したobnizのインスタンスがセットされますので、
+`obniz.display.print("hello")` などと書くことができます。
+
+obnizPartsは、全obnizノードで共通のオブジェクトがセットされます。
+obniz.wiredしたパーツなどを保管しておき、obniz repeat/functionノードで使用することができます
+
+![](./img/sample-config.png)
+
+### obniz repeatノード
+
+obnizがオンラインの間、繰り返し処理するコードです。
+共通設定と同じく、obnizとobnizPartsの2つの変数が定義されています。
+
+
+![](./img/sample-repeat.png)
+
+基本的にはfunctionノードと同じ使い方ができます。
+出力するには、`return msg`をつかってください。
+
+非同期処理を行う場合は、`node.done()` と `node.send(msg)` を使ってください。
+
+
+
+### obniz functionノード
+
+obnizがオンラインの間、繰り返し処理するコードです。
+共通設定と同じく、obnizとobnizPartsの2つの変数が定義されています。
+
+
+![](./img/sample-function.png)
+基本的にはfunctionノードと同じ使い方ができます。
+出力するには、`return msg`をつかってください。
+
+非同期処理を行う場合は、`node.done()` と `node.send(msg)` を使ってください。
+
+
 
 ## LICENSE
 [LICENSE.txt](./LICENSE.txt)を参照ください

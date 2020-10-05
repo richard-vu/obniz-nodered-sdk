@@ -170,13 +170,20 @@ module.exports  = (RED, node, code, obniz, obnizParts, msg, send, done) => {
     sandbox.promisify = util.promisify;
   }
   var context = vm.createContext(sandbox);
+  let handleNodeDoneCall = true;
   try{
+    if (/node\.done\s*\(\s*\)/.test(node.func)) {
+      handleNodeDoneCall = false;
+    }
+
     node.script = new vm.Script(functionText, createVMOpt(node, ""));
     let p = node.script.runInContext(context);
 
     p.then((result)=>{
       send(result);
-      done();
+      if (handleNodeDoneCall) {
+        done();
+      }
     }).catch(err => {
       if ((typeof err === "object") && err.hasOwnProperty("stack")) {
         //remove unwanted part
