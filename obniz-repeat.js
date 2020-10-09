@@ -22,7 +22,7 @@ module.exports = function(RED) {
           await new Promise((resolve, reject) => {
             let done = (err)=>{
               if(err){
-                node.error(err);
+                this.error(err);
                 reject(err);
                 return;
               }
