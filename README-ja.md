@@ -1,6 +1,6 @@
 ## node-red obniz node
 
-node-redのobnizノードです
+Node-REDのobnizノードです
 
 [obniz websocket api](https://obniz.io/doc/about_obniz_api)に基づいて使うことができます
 
@@ -19,8 +19,8 @@ Electronics as a Serviceという、電子回路をAPIから操作できるク�
 npm install node-red-contrib-obniz
 ```
 
-もしくはnode-red上で、下記の方法でもインストールできます
-1. node-redの"manage parlette"メニューをクリック
+もしくはNode-RED上で、下記の方法でもインストールできます
+1. Node-REDの `メニュー` > `パレットの管理` をクリック
 2. "obniz"で検索
 3. "Install"ボタンをクリック
 
