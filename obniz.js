@@ -29,7 +29,7 @@ module.exports = function(RED) {
 
     this.changeStatus({ fill: 'green', shape: 'ring', text: 'connecting...' });
     let option = {
-      access_token : this.accessToken.length > 0   ? this.accessToken.length : undefined,
+      access_token : this.accessToken.length > 0   ? this.accessToken : undefined,
     }
     if(this.deviceType === "m5stickc"){
       this.obniz = new Obniz.M5StickC(this.obnizId, option);
