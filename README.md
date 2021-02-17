@@ -1,7 +1,7 @@
 ## node-red obniz node
 
 
-This library add obniz node to your node-red.
+This library add obniz node to your Node-RED.
 
 It uses [obniz websocket api](https://obniz.io/doc/about_obniz_api).
 
@@ -21,7 +21,7 @@ npm install node-red-contrib-obniz
 
 or 
 
-1. Go to "manage parlette" menu on your nod-red
+1. Go to "Palette Manager" menu on your Node-RED
 2. Search "obniz" on Node-RED Library
 3. Click "Install"
 
