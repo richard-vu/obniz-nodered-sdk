@@ -38,7 +38,14 @@ module.exports = function(RED) {
     }else{
       this.obniz = new Obniz(this.obnizId, option);
     }
-    this.obnizParts = {};
+    this.obnizParts = {
+      device: (name) => {
+        return Obniz.getPartsClass(name);
+      },
+      OMRON_2JCIE: (p) => {
+        return new OMRON_2JCIE(p)
+      }
+    };
 
     this.obniz.onconnect = () =>{
       this.connected = true;
