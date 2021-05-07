@@ -41,9 +41,6 @@ module.exports = function(RED) {
     this.obnizParts = {
       device: (name) => {
         return Obniz.getPartsClass(name);
-      },
-      OMRON_2JCIE: (p) => {
-        return new OMRON_2JCIE(p)
       }
     };
 
